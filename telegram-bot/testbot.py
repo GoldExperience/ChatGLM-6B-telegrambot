@@ -9,6 +9,7 @@ import telebot
 # print(response)
 
 BOT_TOKEN = os.environ.get('BOT_TOKEN')
+BOT_TOKEN = "AAFxuL31QlQLR7CCSu7VjQ-xfcyTPOimizY"
 print(BOT_TOKEN)
 
 bot = telebot.TeleBot(BOT_TOKEN)
