@@ -40,6 +40,11 @@ with open('example_text.txt') as f:
 def split_text(text, max_tokens=20):
     # 将文本按照句子的标点进行拆分
     sentences = re.split(r'[\n。，？！,.?!]', text)
+    sentences = re.sub('([。！？\?])([^”’])', r"\1\n\2", sentences)  # 单字符断句符
+    sentences = re.sub('(\.{6})([^”’])', r"\1\n\2", sentences)  # 英文省略号
+    sentences = re.sub('(\…{2})([^”’])', r"\1\n\2", sentences)  # 中文省略号
+    sentences = re.sub('([。！？\?][”’])([^，。！？\?])', r'\1\n\2', sentences)
+
     result = []
 
     for sentence in sentences:
