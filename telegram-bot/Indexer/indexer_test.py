@@ -38,12 +38,16 @@ with open('example_text.txt') as f:
 # )
 
 # CharacterTextSplitter
-text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
+# text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
+
+# my_simple_spliter
+def my_simple_spliter(sentence,chunk_size):
+    sentence = sentence.split('。')
+    return sentence
 
 
-
-texts = text_splitter.split_text(example_text)
-
+# texts = text_splitter.split_text(example_text)
+texts = my_simple_spliter(example_text,chunk_size)
 
 chinese_tokenizer = AutoTokenizer.from_pretrained("bert-base-chinese")
 for text in texts:
