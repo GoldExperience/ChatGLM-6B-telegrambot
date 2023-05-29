@@ -37,31 +37,12 @@ with open('example_text.txt') as f:
 #     length_function = len,
 # )
 
-def split_text(text, max_tokens=20):
-    # 将文本按照句子的标点进行拆分
-    # sentences = re.split(r'[\n。，？！,.?!]', text)
-    # result = []
-
-    # for sentence in sentences:
-    #     if sentence:
-    #         # 删除前后的空白字符
-    #         sentence = sentence.strip()
-    #         # 计算中英文混合字符串的长度
-    #         token_count = len(sentence) + sum(map(lambda x: x >= '\u4e00' and x <= '\u9fa5', sentence))
-    #         # 将较长的句子进行再分割
-    #         if token_count > max_tokens:
-    #             result.extend(split_text(sentence[:max_tokens]) + split_text(sentence[max_tokens:], max_tokens))
-    #         else:
-    #             result.append(sentence)
-    pattern = r',|.|。'
-    sentences = re.split(pattern, text)
-
-    return sentences
+# CharacterTextSplitter
+text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
 
 
-# texts = text_splitter.split_text(example_text)
-sys.setrecursionlimit(10000)
-texts = split_text(example_text,max_tokens=chunk_size)
+
+texts = text_splitter.split_text(example_text)
 
 
 chinese_tokenizer = AutoTokenizer.from_pretrained("bert-base-chinese")
