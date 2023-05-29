@@ -30,7 +30,7 @@ texts = text_splitter.split_text(example_text)
 
 
 
-
+chinese_tokenizer = AutoTokenizer.from_pretrained("bert-base-chinese")
 for text in texts:
     print("="*20)
     print(text)
