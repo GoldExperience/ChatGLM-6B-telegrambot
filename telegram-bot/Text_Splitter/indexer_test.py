@@ -1,6 +1,7 @@
 from transformers import GPT2TokenizerFast
 from langchain.text_splitter import CharacterTextSplitter,TokenTextSplitter,RecursiveCharacterTextSplitter
 from transformers import AutoTokenizer
+from ChineseTextSpliter import ChineseTextSplitter
 import sys
 import re
 
