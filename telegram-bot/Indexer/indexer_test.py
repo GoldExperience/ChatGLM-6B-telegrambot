@@ -14,16 +14,16 @@ def countToken(input_string,tokenizer):
 with open('example_text.txt') as f:
     example_text = f.read()
 
-# # bert-chinese tokenizer
-# tokenizer = AutoTokenizer.from_pretrained("bert-base-chinese")
-# text_splitter = CharacterTextSplitter.from_huggingface_tokenizer(tokenizer, chunk_size=chunk_size, chunk_overlap=0)
+# bert-chinese tokenizer
+tokenizer = AutoTokenizer.from_pretrained("bert-base-chinese")
+text_splitter = CharacterTextSplitter.from_huggingface_tokenizer(tokenizer, chunk_size=chunk_size, chunk_overlap=0)
 
 # # token_based tokenizer
 # text_splitter = TokenTextSplitter(chunk_size=chunk_size, chunk_overlap=0)
 
 # gpt2-tokenizer
-tokenizer = GPT2TokenizerFast.from_pretrained("gpt2")
-text_splitter = CharacterTextSplitter.from_huggingface_tokenizer(tokenizer, chunk_size=chunk_size, chunk_overlap=0)
+# tokenizer = GPT2TokenizerFast.from_pretrained("gpt2")
+# text_splitter = CharacterTextSplitter.from_huggingface_tokenizer(tokenizer, chunk_size=chunk_size, chunk_overlap=0)
 
 
 texts = text_splitter.split_text(example_text)
