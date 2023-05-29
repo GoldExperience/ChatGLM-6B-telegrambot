@@ -4,7 +4,7 @@ from transformers import AutoTokenizer
 
 
 def countToken(input_string,tokenizer):
-    tokens = tokenizer.tokenize(sentence)
+    tokens = tokenizer.tokenize(input_string)
     return(len(tokens))
 
 # tokenizer = GPT2TokenizerFast.from_pretrained("gpt2")
