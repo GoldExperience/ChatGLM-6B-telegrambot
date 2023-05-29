@@ -53,7 +53,7 @@ def split_text(text, max_tokens=20):
     #             result.extend(split_text(sentence[:max_tokens]) + split_text(sentence[max_tokens:], max_tokens))
     #         else:
     #             result.append(sentence)
-    pattern = r',|\.|/|;|\'|`|\[|\]|<|>|\?|:|"|\{|\}|\~|!|@|#|\$|%|\^|&|\(|\)|-|=|\_|\+|，|。|、|；|‘|’|【|】|·|！| |…|（|）'
+    pattern = r',|.|。'
     sentences = re.split(pattern, text)
 
     return sentences
