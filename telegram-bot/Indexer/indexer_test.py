@@ -20,6 +20,9 @@ with open('example_text.txt') as f:
 text_splitter = TokenTextSplitter(chunk_size=chunk_size, chunk_overlap=0)
 texts = text_splitter.split_text(example_text)
 
+
 for text in texts:
+    print("="*20)
+    print(text)
     print("lenth of string",len(text))
     print("token of string",countToken(text,chinese_tokenizer))
