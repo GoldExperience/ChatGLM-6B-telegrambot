@@ -1,7 +1,7 @@
 from langchain.text_splitter import CharacterTextSplitter
 import re
 from typing import List
-from configs.model_config import SENTENCE_SIZE
+SENTENCE_SIZE = 100
 
 # copy from https://github.com/imClumsyPanda/langchain-ChatGLM/blob/master/textsplitter/chinese_text_splitter.py
 
