@@ -58,6 +58,7 @@ def split_text(text, max_tokens=20):
 
 
 # texts = text_splitter.split_text(example_text)
+sys.setrecursionlimit(10000)
 texts = split_text(example_text,max_tokens=chunk_size)
 
 
