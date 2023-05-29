@@ -3,7 +3,7 @@ from langchain.text_splitter import CharacterTextSplitter
 from transformers import AutoTokenizer
 import sys
 
-chunk_size = int(sys.argv[0])
+chunk_size = int(sys.argv[1])
 
 def countToken(input_string,tokenizer):
     tokens = tokenizer.tokenize(input_string)
