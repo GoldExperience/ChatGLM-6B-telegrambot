@@ -49,7 +49,6 @@ with open('example_text.txt') as f:
 
 # ChineseTextSplitter
 text_splitter = ChineseTextSplitter()
-
 texts = text_splitter.split_text(example_text)
 
 chinese_tokenizer = AutoTokenizer.from_pretrained("bert-base-chinese")
