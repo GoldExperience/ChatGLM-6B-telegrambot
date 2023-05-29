@@ -9,7 +9,7 @@ def countToken(input_string,tokenizer):
     tokens = tokenizer.tokenize(input_string)
     return(len(tokens))
 
-# tokenizer = GPT2TokenizerFast.from_pretrained("gpt2")
+chinese_tokenizer = GPT2TokenizerFast.from_pretrained("gpt2")
 tokenizer = AutoTokenizer.from_pretrained("bert-base-chinese")
 
 # This is a long document we can split up.
@@ -20,4 +20,4 @@ texts = text_splitter.split_text(example_text)
 
 for text in texts:
     print("lenth of string",len(text))
-    print("token of string",countToken(text,tokenizer))
+    print("token of string",countToken(text,chinese_tokenizer))
