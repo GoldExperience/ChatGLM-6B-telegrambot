@@ -45,21 +45,21 @@ def split_text(text, max_tokens=20):
     sentences = re.sub('(\…{2})([^”’])', r"\1\n\2", sentences)  # 中文省略号
     sentences = re.sub('([。！？\?][”’])([^，。！？\?])', r'\1\n\2', sentences)
 
-    result = []
+    # result = []
 
-    for sentence in sentences:
-        if sentence:
-            # 删除前后的空白字符
-            sentence = sentence.strip()
-            # 计算中英文混合字符串的长度
-            token_count = len(sentence) + sum(map(lambda x: x >= '\u4e00' and x <= '\u9fa5', sentence))
-            # 将较长的句子进行再分割
-            if token_count > max_tokens:
-                result.extend(split_text(sentence[:max_tokens]) + split_text(sentence[max_tokens:], max_tokens))
-            else:
-                result.append(sentence)
+    # for sentence in sentences:
+    #     if sentence:
+    #         # 删除前后的空白字符
+    #         sentence = sentence.strip()
+    #         # 计算中英文混合字符串的长度
+    #         token_count = len(sentence) + sum(map(lambda x: x >= '\u4e00' and x <= '\u9fa5', sentence))
+    #         # 将较长的句子进行再分割
+    #         if token_count > max_tokens:
+    #             result.extend(split_text(sentence[:max_tokens]) + split_text(sentence[max_tokens:], max_tokens))
+    #         else:
+    #             result.append(sentence)
 
-    return result
+    return sentences
 
 
 # texts = text_splitter.split_text(example_text)
