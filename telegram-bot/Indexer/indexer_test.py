@@ -1,5 +1,5 @@
 from transformers import GPT2TokenizerFast
-from langchain.text_splitter import CharacterTextSplitter,TokenTextSplitter
+from langchain.text_splitter import CharacterTextSplitter,TokenTextSplitter,RecursiveCharacterTextSplitter
 from transformers import AutoTokenizer
 import sys
 
@@ -26,7 +26,15 @@ with open('example_text.txt') as f:
 # text_splitter = CharacterTextSplitter.from_huggingface_tokenizer(tokenizer, chunk_size=chunk_size, chunk_overlap=0)
 
 # tiktoken tokenizer
-text_splitter = CharacterTextSplitter.from_tiktoken_encoder(chunk_size=100, chunk_overlap=0)
+# text_splitter = CharacterTextSplitter.from_tiktoken_encoder(chunk_size=100, chunk_overlap=0)
+
+# Recursive
+text_splitter = RecursiveCharacterTextSplitter(
+    # Set a really small chunk size, just to show.
+    chunk_size = chunk_size,
+    chunk_overlap  = 20,
+    length_function = len,
+)
 
 
 texts = text_splitter.split_text(example_text)
