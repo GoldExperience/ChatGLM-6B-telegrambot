@@ -1,6 +1,7 @@
 from transformers import AutoTokenizer, AutoModel
 import os
 import telebot
+from Text_Splitter import *
 
 tokenizer = AutoTokenizer.from_pretrained("THUDM/chatglm-6b", trust_remote_code=True)
 model = AutoModel.from_pretrained("THUDM/chatglm-6b-int4", trust_remote_code=True).half().cuda()
