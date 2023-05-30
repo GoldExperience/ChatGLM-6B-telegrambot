@@ -1,1 +1,1 @@
-from ChineseTextSpliter import ChineseTextSplitter
+from .ChineseTextSpliter import ChineseTextSplitter
