@@ -1,2 +1,4 @@
 from text_splitter import *
-print("hello world")
+from chains.search_engine import duckduckgo
+
+duckduckgo.test()
