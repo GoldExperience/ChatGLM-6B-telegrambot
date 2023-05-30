@@ -1,2 +1,2 @@
-from .Text_Splitter import ChineseTextSpliter
+from .Text_Splitter import *
 print("hello world")
