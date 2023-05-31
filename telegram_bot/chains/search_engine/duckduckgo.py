@@ -1,7 +1,7 @@
 from duckduckgo_search import DDGS,ddg
 
 def search_text(search_text):
-    results = ddg(keywords, region='wt-wt', safesearch='Off', time='y')
+    results = ddg(search_text, region='wt-wt', safesearch='Off', time='y')
     return results
 
 # def search_text(search_text, region='wt-wt'):
