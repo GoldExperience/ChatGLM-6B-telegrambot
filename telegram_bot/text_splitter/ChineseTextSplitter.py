@@ -68,7 +68,7 @@ class ChineseTextSplitter(CharacterTextSplitter):
     
     def split_text_by_token(self,text:str,token_limit) -> List[str]:
         tokens_required = self.countToken(text,self.chinese_tokenizer)
-        if tokens_required>token_limit:
+        if tokens_required>int(token_limit):
             return self.split_text(text)
         return text
 
