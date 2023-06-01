@@ -1,5 +1,9 @@
 from chains.search_engine import duckduckgo
 from text_splitter import ChineseTextSplitter
+from langchain.embeddings.openai import OpenAIEmbeddings
+from langchain.vectorstores import Chroma
+from langchain.schema import Document
+
 import os
 import sys
 
@@ -9,7 +13,6 @@ from langchain.vectorstores import Chroma
 
 OPENAI_KEY = os.environ.get('OPENAI_KEY')
 splitter = ChineseTextSplitter.ChineseTextSplitter()
-
 
 def search_result_splitter(results):
     for res in results:
