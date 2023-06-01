@@ -1,5 +1,5 @@
 from chains.search_engine import duckduckgo
-from text_splitter import ChineseTextSpliter
+from text_splitter.ChineseTextSpliter import split_text
 import os
 import sys
 
@@ -8,7 +8,7 @@ from langchain.vectorstores import Chroma
 
 
 OPENAI_KEY = os.environ.get('OPENAI_KEY')
-text_splitter = ChineseTextSpliter
+chinese_text_splitter = ChineseTextSpliter
 
 
 def search_result_splitter(results):
@@ -22,7 +22,7 @@ def create_docs_by_search(search_text):
     
     results = []
     for r in search_results:
-        r_splitted = text_splitter.split_text(r)
+        r_splitted = split_text(r)
         results+=r_splitted
 
     return results
