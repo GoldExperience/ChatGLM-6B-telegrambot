@@ -8,7 +8,7 @@ from langchain.vectorstores import Chroma
 
 
 OPENAI_KEY = os.environ.get('OPENAI_KEY')
-text_splitter = ChineseTextSpliter()
+text_splitter = ChineseTextSpliter
 
 
 def search_result_splitter(results):
