@@ -19,10 +19,14 @@ def search_result_splitter(results):
         split_results = text_splitter.split_text(res)
 
 
+def doc_build(result):
+        return Document(page_content=f"{result['title']},{result['body']}",metadata=f"{'source':f'{result['href']}'}")
+
 def create_docs_by_search(search_text):
     search_results = duckduckgo.search_text(search_text)
-    search_results = [f"{x['title']},{x['body']}" for x in search_results]
-    
+
+    search_results = [doc_build(x) for x in search_results]
+
     # results = []
     # for r in search_results:
     #     r_splitted = splitter.split_text(r)
