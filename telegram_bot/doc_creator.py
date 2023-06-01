@@ -16,18 +16,18 @@ def search_result_splitter(results):
         split_results = text_splitter.split_text(res)
 
 
-def create_docs_by_search(search_text):
+def create_docs_by_search(search_text,token_limit):
     search_results = duckduckgo.search_text(search_text)
     search_results = [f"{x['title']},{x['body']}" for x in search_results]
     
     results = []
     for r in search_results:
-        r_splitted = splitter.split_text(r)
+        r_splitted = splitter.split_text_by_token(r,token_limit)
         results+=r_splitted
 
     return results
 
 if __name__=="__main__":
-    results = create_docs_by_search(sys.argv[1])
+    results = create_docs_by_search(sys.argv[1],sys.argv[2])
     for r in results:
         print(r)

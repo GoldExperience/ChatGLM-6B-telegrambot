@@ -1,6 +1,7 @@
 from langchain.text_splitter import CharacterTextSplitter
 import re
 from typing import List
+from transformers import AutoTokenizer
 SENTENCE_SIZE = 100
 
 # copy from https://github.com/imClumsyPanda/langchain-ChatGLM/blob/master/textsplitter/chinese_text_splitter.py
@@ -10,6 +11,7 @@ class ChineseTextSplitter(CharacterTextSplitter):
         super().__init__(**kwargs)
         self.pdf = pdf
         self.sentence_size = sentence_size
+        self.chinese_tokenizer = AutoTokenizer.from_pretrained("bert-base-chinese")
 
     def split_text1(self, text: str) -> List[str]:
         if self.pdf:
@@ -59,3 +61,14 @@ class ChineseTextSplitter(CharacterTextSplitter):
                 id = ls.index(ele)
                 ls = ls[:id] + [i for i in ele1_ls if i] + ls[id + 1:]
         return ls
+    
+    def countToken(input_string,tokenizer):
+        tokens = tokenizer.tokenize(input_string)
+        return(len(tokens))
+    
+    def split_text_by_token(self,text:str,token_limit) -> List[str]:
+        tokens_required = countToken(text,self.chinese_tokenizer)
+        if tokens_required>token_limit:
+            return self.split_text(text)
+        return text
+
