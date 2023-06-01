@@ -1,5 +1,5 @@
 from chains.search_engine import duckduckgo
-from text_splitter.ChineseTextSpliter import test
+from text_splitter import ChineseTextSpliter
 import os
 import sys
 
