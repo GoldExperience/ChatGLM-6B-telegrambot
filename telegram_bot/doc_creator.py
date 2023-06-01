@@ -18,7 +18,7 @@ def search_result_splitter(results):
 
 def create_docs_by_search(search_text):
     search_results = duckduckgo.search_text(search_text)
-    search_results = [f"{x['title']},{x['body']}" for x in results]
+    search_results = [f"{x['title']},{x['body']}" for x in search_results]
     
     results = []
     for r in search_results:
