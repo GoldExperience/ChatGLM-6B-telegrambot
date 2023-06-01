@@ -13,6 +13,7 @@ from langchain.vectorstores import Chroma
 
 OPENAI_KEY = os.environ.get('OPENAI_KEY')
 splitter = ChineseTextSplitter.ChineseTextSplitter()
+embeddings = OpenAIEmbeddings()
 
 def search_result_splitter(results):
     for res in results:
@@ -24,15 +25,10 @@ def doc_build(result):
 
 def create_docs_by_search(search_text):
     search_results = duckduckgo.search_text(search_text)
-
-    search_results = [doc_build(x) for x in search_results]
-
-    # results = []
-    # for r in search_results:
-    #     r_splitted = splitter.split_text(r)
-    #     results+=r_splitted
-
-    return search_results
+    docs = [doc_build(x) for x in search_results]
+    db = Chroma.from_documents(docs, embeddings)
+    docs = db.similarity_search_with_score(search_text)
+    return docs
 
 if __name__=="__main__":
     results = create_docs_by_search(sys.argv[1])
