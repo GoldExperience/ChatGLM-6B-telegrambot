@@ -62,12 +62,12 @@ class ChineseTextSplitter(CharacterTextSplitter):
                 ls = ls[:id] + [i for i in ele1_ls if i] + ls[id + 1:]
         return ls
     
-    def countToken(input_string,tokenizer):
+    def countToken(self,input_string,tokenizer):
         tokens = tokenizer.tokenize(input_string)
         return(len(tokens))
     
     def split_text_by_token(self,text:str,token_limit) -> List[str]:
-        tokens_required = countToken(text,self.chinese_tokenizer)
+        tokens_required = self.countToken(text,self.chinese_tokenizer)
         if tokens_required>token_limit:
             return self.split_text(text)
         return text
