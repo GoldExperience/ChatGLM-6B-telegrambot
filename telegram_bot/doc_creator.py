@@ -20,7 +20,7 @@ def search_result_splitter(results):
 
 
 def doc_build(result):
-        return Document(page_content=f"{result['title']},{result['body']}",metadata=f"{'source':f'{result['href']}'}")
+        return Document(page_content=f"{result['title']},{result['body']}",metadata={'source':result['href']})
 
 def create_docs_by_search(search_text):
     search_results = duckduckgo.search_text(search_text)
