@@ -1,6 +1,7 @@
 from transformers import AutoTokenizer, AutoModel
 import os
 import telebot
+from message_builder import search_message_prompt_builder
 
 tokenizer = AutoTokenizer.from_pretrained("THUDM/chatglm2-6b", trust_remote_code=True)
 model = AutoModel.from_pretrained("THUDM/chatglm2-6b", trust_remote_code=True).quantize(8).cuda()
@@ -23,7 +24,9 @@ def send_welcome(message):
 
 @bot.message_handler(func=lambda message: True)
 def echo_all(message):
-	response = get_response(message.text)
+	search_message_prompt = search_message_prompt_builder(message.text)
+	print(search_message_prompt)
+	response = get_response(search_message_prompt)
 	bot.reply_to(message, response)
 
 bot.infinity_polling()

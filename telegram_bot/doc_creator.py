@@ -23,14 +23,26 @@ def search_result_splitter(results):
 def doc_build(result):
         return Document(page_content=f"{result['title']},{result['body']}",metadata={'source':result['href']})
 
-def create_docs_by_search(search_text):
+def create_docs_by_search_text(search_text):
     search_results = duckduckgo.search_text(search_text)
     docs = [doc_build(x) for x in search_results]
     db = Chroma.from_documents(docs, embeddings)
     docs = db.similarity_search_with_score(search_text)
     return docs
 
+def generate_search_prompt(docs):
+    search_results_content = [x[0].page_content for x in docs]
+    search_results_content = '\n'.join(search_results_content)
+    search_prompt = f'''
+    搜索结果：
+    {search_results_content}
+    '''
+    return search_prompt
+
+
 if __name__=="__main__":
-    results = create_docs_by_search(sys.argv[1])
-    for r in results:
-        print(r)
+    docs = create_docs_by_search_text(sys.argv[1])
+    # for r in results:
+    #     print(r)
+    search_prompt = generate_search_prompt(docs)
+    print(search_prompt)
